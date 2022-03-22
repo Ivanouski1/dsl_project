@@ -3,7 +3,7 @@ def list_Jobs = ["MNTLAB-aivanouski1-child1-build-job", "MNTLAB-aivanouski1-chil
 job('MNTLAB-aivanouski1-main-build-job') {
 
   description 'Main Job'
-  label 'master'
+  label 'built-in'
   parameters {
     activeChoiceParam('BRANCH_NAME') {
       description('Branch name')
