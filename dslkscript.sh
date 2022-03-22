@@ -5,7 +5,7 @@ job('MNTLAB-aivanouski1-main-build-job') {
     gitParam('BRANCH_NAME') {
       description 'Homework 7'
       type 'BRANCH'
-      defaultValue 'origin/aivanouski1'
+      defaultValue 'origin/master'
     }
     activeChoiceReactiveParam('Job_name') {
            description('Allows job choose from multiple choices')
@@ -19,7 +19,7 @@ job('MNTLAB-aivanouski1-main-build-job') {
   scm {
     git {
       remote {
-        url 'https://github.com/Ivanouski1/build-t00ls'
+        url 'https://github.com/Ivanouski1/build-t00ls.git'
       }
       branch '$BRANCH_NAME'
     }
@@ -62,7 +62,7 @@ mavenJob(job) {
   scm {
     git {
       remote {
-        url 'https://github.com/Ivanouski1/build-t00ls'
+        url 'https://github.com/Ivanouski1/build-t00ls.git'
       }
       branch '$BRANCH_NAME'
     }
@@ -75,8 +75,11 @@ mavenJob(job) {
   rootPOM 'home-task/pom.xml'
   goals 'clean install'
   postBuildSteps {
-        shell('nohup java -jar home-task/target/hw3-app-1.0.jar com.test >> home-task/target/output.log')
-        shell('tar -cvf "$(echo $BRANCH_NAME | cut -d "/" -f 2)_dsl_script.tar.gz" home-task/target/*.jar home-task/target/output.log')
+        
+        shell('echo $BRANCH_NAME') 
+        shell('java -cp home-task/target/ci-training-1.jar com.test.Project > output.log')
+        shell('tar -czvf ${BRANCH_NAME}_dsl_script.tar.gz output.log')
+	    shell('tar -czvf ${BRANCH_NAME}_dsl_script.tar.gz $JENKINS_HOME/jenkinsfile')
     }
   
   publishers {
