@@ -82,13 +82,13 @@ for(jobs in list_Jobs) {
     steps {
         maven {
             rootPOM 'home-task/pom.xml'
-  			goals 'clean install'
+  		              	goals 'clean install'
             mavenInstallation('mvn3')
         }
       	shell('echo $BRANCH_NAME') 
         shell('java -cp home-task/target/ci-training-1.jar com.test.Project > output.log')
         shell('tar -czvf ${BRANCH_NAME}_dsl_script.tar.gz output.log')
-	shell('tar -czvf ${BRANCH_NAME}_dsl_script.tar.gz $JENKINS_HOME/jenkinsfile')
+	      shell('tar -czvf ${BRANCH_NAME}_dsl_script.tar.gz $JENKINS_HOME/jenkinsfile')
     }
 
    scm {
