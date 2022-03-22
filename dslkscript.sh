@@ -5,7 +5,7 @@ job('MNTLAB-aivanouski1-main-build-job') {
     gitParam('BRANCH_NAME') {
       description 'Homework 7'
       type 'BRANCH'
-      defaultValue 'origin/master'
+      defaultValue 'origin/aivanouski1'
     }
     activeChoiceReactiveParam('Job_name') {
            description('Allows job choose from multiple choices')
