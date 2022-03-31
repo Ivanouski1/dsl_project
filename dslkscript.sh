@@ -94,7 +94,7 @@ for(jobs in list_Jobs) {
    scm {
     git {
       remote {
-        url 'https://github.com/cyxopykov/build-t00ls-1.git'
+        url 'https://github.com/Ivanouski1/build-t00ls.git'
       }
       branch '$BRANCH_NAME'
     }
