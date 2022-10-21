@@ -1,3 +1,4 @@
 # dsl_project
-''''bash
-wget
+```bash 
+kubectl config current-context 
+```
